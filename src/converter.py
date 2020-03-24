@@ -35,17 +35,6 @@ def convert_number_to_numeral(number):
 
     return res
 
-
-def convert_numeral_to_number(numeral):
-    if numeral:
-        return len(numeral) * _get_decimal_value_from_numeral(numeral[0])
-    return 0
-
-
-def _get_decimal_value_from_numeral(numeral):
-    val = [key for key, val in numerals.items() if val == numeral]
-    return val[0]
-
 def _number_to_numeral(number):
     res = ""
     power_of_ten = floor_log_10(number)
@@ -53,6 +42,27 @@ def _number_to_numeral(number):
     for numeral in pattern:
         res += numerals[numeral * (10 ** power_of_ten)]
     return res;
+
+
+def convert_numeral_to_number(numeral):
+    if (not numeral):
+        return 0
+    numeral = list(numeral)
+    current_val = _get_decimal_value_from_numeral(numeral.pop())
+    sum = current_val
+
+    while (numeral):
+        prev_val = current_val
+        current_val = _get_decimal_value_from_numeral(numeral.pop())
+        if (current_val < prev_val): current_val = -current_val
+        sum += current_val
+
+    return sum
+
+
+def _get_decimal_value_from_numeral(numeral):
+    val = [decimal for decimal, numer in numerals.items() if numer == numeral]
+    return val[0]
 
 
 def floor_log_10(number):
