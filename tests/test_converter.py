@@ -1,6 +1,7 @@
 import pytest
 
+from src.converter import number_to_numeral
 
-@pytest.mark.parametrize("truthy_args", [1, 1.0, True])
-def test_smoke_test(truthy_args):
-    assert truthy_args == True
+@pytest.mark.parametrize("number,expected_numeral", [(1, "I")])
+def test_should_convert_number_to_numeral(number, expected_numeral):
+    assert number_to_numeral(number) == expected_numeral
