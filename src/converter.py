@@ -27,26 +27,28 @@ patterns = {
 
 
 def convert_number_to_numeral(number):
-    res = ""
+    numeral = ""
     number_arr = split_int_into_factors_of_ten(number)
 
-    for decimal in number_arr:
-        res += _number_to_numeral(decimal)
+    for factor in number_arr:
+        numeral += (_number_to_numeral(factor))
 
-    return res
+    return numeral
+
 
 def _number_to_numeral(number):
-    res = ""
+    numeral = ""
     power_of_ten = floor_log_10(number)
     pattern = patterns[number // 10 ** power_of_ten]
-    for numeral in pattern:
-        res += numerals[numeral * (10 ** power_of_ten)]
-    return res;
+    for digit in pattern:
+        numeral += numerals[digit * (10 ** power_of_ten)]
+    return numeral
 
 
 def convert_numeral_to_number(numeral):
     if (not numeral):
         return 0
+
     numeral = list(numeral)
     current_val = _get_decimal_value_from_numeral(numeral.pop())
     sum = current_val
