@@ -1,6 +1,6 @@
 import pytest
 
-from src.converter import number_to_numeral, get_magnitude
+from src.converter import number_to_numeral
 
 
 @pytest.mark.parametrize("number,expected_numeral", [
@@ -23,15 +23,3 @@ def test_should_convert_number_to_numeral(number, expected_numeral):
     assert number_to_numeral(number) == expected_numeral
 
 
-@pytest.mark.parametrize("number,expected_factor_of_ten", [
-    (1, 1),
-    (2, 1),
-    (10, 10),
-    (30, 10),
-    (100, 100),
-    (900, 100),
-    (1000, 1000),
-    (5000, 1000)
-])
-def test_get_magnitude(number, expected_factor_of_ten):
-    assert get_magnitude(number) == expected_factor_of_ten
