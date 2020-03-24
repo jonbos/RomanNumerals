@@ -50,7 +50,6 @@ def convert_numeral_to_number(numeral):
     numeral = list(numeral)
     current_val = _get_decimal_value_from_numeral(numeral.pop())
     sum = current_val
-
     while (numeral):
         prev_val = current_val
         current_val = _get_decimal_value_from_numeral(numeral.pop())
@@ -63,6 +62,18 @@ def convert_numeral_to_number(numeral):
 def _get_decimal_value_from_numeral(numeral):
     val = [decimal for decimal, numer in numerals.items() if numer == numeral]
     return val[0]
+
+
+def numeral_is_valid(numeral):
+    numeral_chars = "".join(numerals.values())
+    for char in numeral:
+        if char not in numeral_chars:
+            return False
+    return True
+
+
+def number_is_valid(number):
+    return type(number) == int and number <= 3999
 
 
 def floor_log_10(number):
