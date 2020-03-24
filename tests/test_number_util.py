@@ -1,6 +1,6 @@
 import pytest
 
-from src.number_util import split_int_into_factors_of_ten
+from src.util import split_int_into_factors_of_ten
 
 
 @pytest.mark.parametrize("number,expected_array", [

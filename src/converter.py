@@ -1,6 +1,6 @@
 import math
 
-from src.number_util import split_int_into_factors_of_ten
+from src.util import split_int_into_factors_of_ten
 
 numerals = {
     1: "I",
@@ -34,6 +34,10 @@ def convert_number_to_numeral(number):
         res += _number_to_numeral(decimal)
 
     return res
+
+
+def convert_numeral_to_number(numeral):
+    return 0
 
 
 def _number_to_numeral(number):
