@@ -1,5 +1,4 @@
-numerals = {1: "I", 10: "X", 100: "C", 1000: "M"}
-
+numerals = {1: "I", 5: "V", 10: "X", 100: "C", 1000: "M"}
 
 # mapping={
 #     1:[1],
@@ -16,7 +15,6 @@ numerals = {1: "I", 10: "X", 100: "C", 1000: "M"}
 def number_to_numeral(number):
     magnitude = get_magnitude(number)
     return numerals[magnitude] * (number // magnitude)
-
 
 def get_magnitude(number):
     decimal = (next(decimal for decimal in reversed(list(numerals)) if number >= decimal))
