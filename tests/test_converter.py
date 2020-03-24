@@ -38,6 +38,14 @@ def test_should_convert_number_to_numeral(number, expected_numeral):
     ("", 0),
     ("I", 1),
     ("II", 2),
+    ("III", 3),
+    ("X", 10),
+    ("XX", 20),
+    ("XXX", 30),
+    ("C", 100),
+    ("CC", 200),
+    ("CCC", 300),
+    ("V", 5)
 ])
 def test_should_convert_numeral_to_number(numeral, expected_number):
     assert convert_numeral_to_number(numeral) == expected_number

@@ -38,9 +38,13 @@ def convert_number_to_numeral(number):
 
 def convert_numeral_to_number(numeral):
     if numeral:
-        return len(numeral)
+        return len(numeral) * _get_decimal_value_from_numeral(numeral[0])
     return 0
 
+
+def _get_decimal_value_from_numeral(numeral):
+    val = [key for key, val in numerals.items() if val == numeral]
+    return val[0]
 
 def _number_to_numeral(number):
     res = ""
