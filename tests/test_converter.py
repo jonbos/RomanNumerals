@@ -1,6 +1,7 @@
 import pytest
 
-from src.converter import convert_number_to_numeral, convert_numeral_to_number, numeral_is_valid, number_is_valid
+from src.converter import convert_number_to_numeral, convert_numeral_to_number, numeral_is_valid, number_is_valid, \
+    convert
 
 
 @pytest.mark.parametrize("number,expected_numeral", [
@@ -73,3 +74,29 @@ def test_should_return_invalid_when_numeral_is_invalid(invalid_input):
 ])
 def test_should_return_invalid_when_numeral_is_invalid(invalid_input):
     assert number_is_valid(invalid_input) == False
+
+
+@pytest.mark.parametrize("invalid_input", [
+    "A",
+    4000,
+    1.1,
+    "XXIABC"
+])
+def test_should_print_error_if_input_to_convert_method_is_invalid(invalid_input):
+    assert convert(invalid_input) == "Invalid input: " + str(invalid_input)
+
+
+@pytest.mark.parametrize("input,expected_output", [
+    (1, "I"),
+    ("I", 1),
+    ("CDXCIX", 499),
+    ("MMMCMXCIX", 3999),
+    ("MLXVI", 1066),
+    ("MCMLXXXIX", 1989),
+    (499, "CDXCIX"),
+    (3999, "MMMCMXCIX"),
+    (1066, "MLXVI"),
+    (1989, "MCMLXXXIX")
+])
+def test_convert_method_determines_type_of_input_and_converts_appropriately(input, expected_output):
+    assert convert(input) == expected_output

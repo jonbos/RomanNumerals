@@ -26,6 +26,20 @@ patterns = {
 }
 
 
+def is_valid(number_or_numeral):
+    return number_is_valid(number_or_numeral) or numeral_is_valid(number_or_numeral)
+
+
+def convert(number_or_numeral):
+    if (not is_valid(number_or_numeral)):
+        return "Invalid input: " + str(number_or_numeral)
+
+    if (number_is_valid(number_or_numeral)):
+        return convert_number_to_numeral(number_or_numeral)
+    else:
+        return convert_numeral_to_number(number_or_numeral)
+
+
 def convert_number_to_numeral(number):
     numeral = ""
     number_arr = split_int_into_factors_of_ten(number)
@@ -68,7 +82,7 @@ def _get_decimal_value_from_numeral(numeral):
 
 def numeral_is_valid(numeral):
     numeral_chars = "".join(numerals.values())
-    for char in numeral:
+    for char in str(numeral):
         if char not in numeral_chars:
             return False
     return True
