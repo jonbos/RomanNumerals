@@ -9,7 +9,8 @@ from src.converter import number_to_numeral
     (3, "III"),
     (10, "X"),
     (20, "XX"),
-    (30, "XXX")
+    (30, "XXX"),
+    (100, "C")
 ])
 def test_should_convert_number_to_numeral(number, expected_numeral):
     assert number_to_numeral(number) == expected_numeral
