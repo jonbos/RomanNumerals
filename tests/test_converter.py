@@ -26,7 +26,9 @@ from src.converter import convert_number_to_numeral, convert_numeral_to_number
     (2000, "MM"),
     (3000, "MMM"),
     (499, "CDXCIX"),
-    (3999, "MMMCMXCIX")
+    (3999, "MMMCMXCIX"),
+    (1066, "MLXVI"),
+    (1989, "MCMLXXXIX")
 ])
 def test_should_convert_number_to_numeral(number, expected_numeral):
     assert convert_number_to_numeral(number) == expected_numeral
@@ -34,6 +36,7 @@ def test_should_convert_number_to_numeral(number, expected_numeral):
 
 @pytest.mark.parametrize("numeral,expected_number", [
     ("", 0),
+    ("I", 1)
 ])
 def test_should_convert_numeral_to_number(numeral, expected_number):
     assert convert_numeral_to_number(numeral) == expected_number
