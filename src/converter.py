@@ -1,4 +1,4 @@
-numerals = {1: "I", 10: "X", 100: "C"}
+numerals = {1: "I", 10: "X", 100: "C", 1000: "M"}
 
 
 # mapping={
@@ -14,9 +14,12 @@ numerals = {1: "I", 10: "X", 100: "C"}
 #     10: [10]
 # }
 def number_to_numeral(number):
+
     if (number < 10):
         return numerals[1] * number;
     elif number < 100:
         return numerals[10] * (number // 10)
-    else:
+    elif number < 1000:
         return numerals[100] * (number // 100)
+    else:
+        return numerals[1000] * (number // 1000)
