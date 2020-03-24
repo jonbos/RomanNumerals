@@ -26,18 +26,18 @@ patterns = {
 }
 
 
-def is_valid(number_or_numeral):
-    return number_is_valid(number_or_numeral) or numeral_is_valid(number_or_numeral)
-
-
 def convert(number_or_numeral):
     if (not is_valid(number_or_numeral)):
         return "Invalid input: " + str(number_or_numeral)
 
-    if (number_is_valid(number_or_numeral)):
+    if (_number_is_valid(number_or_numeral)):
         return convert_number_to_numeral(number_or_numeral)
     else:
         return convert_numeral_to_number(number_or_numeral)
+
+
+def is_valid(number_or_numeral):
+    return _number_is_valid(number_or_numeral) or _numeral_is_valid(number_or_numeral)
 
 
 def convert_number_to_numeral(number):
@@ -52,7 +52,7 @@ def convert_number_to_numeral(number):
 
 def _number_to_numeral(number):
     numeral = ""
-    power_of_ten = floor_log_10(number)
+    power_of_ten = _floor_log_10(number)
     pattern = patterns[number // 10 ** power_of_ten]
     for digit in pattern:
         numeral += numerals[digit * (10 ** power_of_ten)]
@@ -64,11 +64,13 @@ def convert_numeral_to_number(numeral):
         return 0
 
     numeral = list(numeral)
+    # pop each numeral off the back of the list (effectively reversing the numeral string)
     current_val = _get_decimal_value_from_numeral(numeral.pop())
     sum = current_val
     while (numeral):
         prev_val = current_val
         current_val = _get_decimal_value_from_numeral(numeral.pop())
+        # if the current value is less than the previous value, it should be subtracted from sum
         if (current_val < prev_val): current_val = -current_val
         sum += current_val
 
@@ -80,7 +82,7 @@ def _get_decimal_value_from_numeral(numeral):
     return val[0]
 
 
-def numeral_is_valid(numeral):
+def _numeral_is_valid(numeral):
     numeral_chars = "".join(numerals.values())
     for char in str(numeral):
         if char not in numeral_chars:
@@ -88,9 +90,9 @@ def numeral_is_valid(numeral):
     return True
 
 
-def number_is_valid(number):
+def _number_is_valid(number):
     return type(number) == int and number <= 3999
 
 
-def floor_log_10(number):
+def _floor_log_10(number):
     return math.floor(math.log10(number))
