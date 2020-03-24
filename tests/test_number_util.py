@@ -1,6 +1,6 @@
 import pytest
 
-from src.util import split_int_into_factors_of_ten
+from src.util import split_number_into_orders_of_ten
 
 
 @pytest.mark.parametrize("number,expected_array", [
@@ -12,4 +12,4 @@ from src.util import split_int_into_factors_of_ten
     (1234, [1000, 200, 30, 4])
 ])
 def test_should_split_number_on_decimal_place(number, expected_array):
-    assert split_int_into_factors_of_ten(number) == expected_array
+    assert split_number_into_orders_of_ten(number) == expected_array

@@ -1,6 +1,6 @@
 import math
 
-from src.util import split_int_into_factors_of_ten
+from src.util import split_number_into_orders_of_ten
 
 numerals = {
     1: "I",
@@ -30,19 +30,18 @@ def convert(number_or_numeral):
     if (not is_valid(number_or_numeral)):
         return "Invalid input: " + str(number_or_numeral)
 
-    if (_number_is_valid(number_or_numeral)):
+    if (_is_valid_number(number_or_numeral)):
         return convert_number_to_numeral(number_or_numeral)
     else:
         return convert_numeral_to_number(number_or_numeral)
 
-
 def is_valid(number_or_numeral):
-    return _number_is_valid(number_or_numeral) or _numeral_is_valid(number_or_numeral)
+    return _is_valid_number(number_or_numeral) or _is_valid_numeral(number_or_numeral)
 
 
 def convert_number_to_numeral(number):
     numeral = ""
-    number_arr = split_int_into_factors_of_ten(number)
+    number_arr = split_number_into_orders_of_ten(number)
 
     for factor in number_arr:
         numeral += (_number_to_numeral(factor))
@@ -82,7 +81,7 @@ def _get_decimal_value_from_numeral(numeral):
     return val[0]
 
 
-def _numeral_is_valid(numeral):
+def _is_valid_numeral(numeral):
     numeral_chars = "".join(numerals.values())
     for char in str(numeral):
         if char not in numeral_chars:
@@ -90,7 +89,7 @@ def _numeral_is_valid(numeral):
     return True
 
 
-def _number_is_valid(number):
+def _is_valid_number(number):
     return type(number) == int and number <= 3999
 
 
