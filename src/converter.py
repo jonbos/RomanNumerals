@@ -11,15 +11,13 @@ numerals = {1: "I", 10: "X", 100: "C", 1000: "M"}
 #     7: [5,1,1],
 #     8: [5,1,1,1],
 #     9: [1,10],
-#     10: [10]
 # }
-def number_to_numeral(number):
 
-    if (number < 10):
-        return numerals[1] * number;
-    elif number < 100:
-        return numerals[10] * (number // 10)
-    elif number < 1000:
-        return numerals[100] * (number // 100)
-    else:
-        return numerals[1000] * (number // 1000)
+def number_to_numeral(number):
+    magnitude = get_magnitude(number)
+    return numerals[magnitude] * (number // magnitude)
+
+
+def get_magnitude(number):
+    decimal = (next(decimal for decimal in reversed(list(numerals)) if number >= decimal))
+    return decimal
