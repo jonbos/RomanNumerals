@@ -1,9 +1,10 @@
 import pytest
 
-from src.converter import number_to_numeral
+from src.converter import convert_number_to_numeral
 
 
 @pytest.mark.parametrize("number,expected_numeral", [
+    (0, ""),
     (1, "I"),
     (2, "II"),
     (3, "III"),
@@ -24,6 +25,8 @@ from src.converter import number_to_numeral
     (1000, "M"),
     (2000, "MM"),
     (3000, "MMM"),
+    (499, "CDXCIX"),
+    (3999, "MMMCMXCIX")
 ])
 def test_should_convert_number_to_numeral(number, expected_numeral):
-    assert number_to_numeral(number) == expected_numeral
+    assert convert_number_to_numeral(number) == expected_numeral

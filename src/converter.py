@@ -26,16 +26,24 @@ patterns = {
 }
 
 
-def number_to_numeral(number):
+def convert_number_to_numeral(number):
     res = ""
     number_arr = split_int_into_factors_of_ten(number)
 
     for decimal in number_arr:
-        power_of_ten = floor_log_10(decimal)
-        pattern = patterns[decimal // 10 ** power_of_ten]
-        for numeral in pattern:
-            res += numerals[numeral * (10 ** power_of_ten)]
+        res += _number_to_numeral(decimal)
+
     return res
+
+
+def _number_to_numeral(number):
+    res = ""
+    power_of_ten = floor_log_10(number)
+    pattern = patterns[number // 10 ** power_of_ten]
+    for numeral in pattern:
+        res += numerals[numeral * (10 ** power_of_ten)]
+    return res;
+
 
 def floor_log_10(number):
     return math.floor(math.log10(number))
