@@ -36,7 +36,8 @@ def test_should_convert_number_to_numeral(number, expected_numeral):
 
 @pytest.mark.parametrize("numeral,expected_number", [
     ("", 0),
-    ("I", 1)
+    ("I", 1),
+    ("II", 2),
 ])
 def test_should_convert_numeral_to_number(numeral, expected_number):
     assert convert_numeral_to_number(numeral) == expected_number

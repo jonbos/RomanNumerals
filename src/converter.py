@@ -38,7 +38,7 @@ def convert_number_to_numeral(number):
 
 def convert_numeral_to_number(numeral):
     if numeral:
-        return 1
+        return len(numeral)
     return 0
 
 
