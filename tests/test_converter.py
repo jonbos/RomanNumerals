@@ -17,6 +17,7 @@ from src.converter import number_to_numeral, get_magnitude
     (2000, "MM"),
     (3000, "MMM"),
     (5, "V"),
+    (4, "IV")
 ])
 def test_should_convert_number_to_numeral(number, expected_numeral):
     assert number_to_numeral(number) == expected_numeral
