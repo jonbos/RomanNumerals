@@ -11,6 +11,5 @@ number_to_numeral_pattern = {
     9: [1, 10]
 }
 
-
 def get_numeral_pattern_from_number(number):
     return number_to_numeral_pattern[number];
