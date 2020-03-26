@@ -1,19 +1,6 @@
 import pytest
 
-from src.numeral_mapping import get_numeral_from_decimal_value, get_decimal_value_from_numeral
-
-
-@pytest.mark.parametrize("decimal,expected_numeral", [
-    (1, "I"),
-    (5, "V"),
-    (10, "X"),
-    (50, "L"),
-    (100, "C"),
-    (500, "D"),
-    (1000, "M")
-])
-def test_should_return_numeral_from_decimal_value_decimal_place(decimal, expected_numeral):
-    assert get_numeral_from_decimal_value(decimal) == expected_numeral
+from src.numeral_mapping import get_decimal_value_from_numeral
 
 
 @pytest.mark.parametrize("numeral, expected_decimal", [
