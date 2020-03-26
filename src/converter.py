@@ -1,6 +1,7 @@
 from src.numeral_mapping import get_decimal_value_from_numeral, get_numeral_from_decimal_value, number_to_numeral
-from src.numeral_patterns import get_numeral_pattern_from_number
-from src.util import split_number_into_orders_of_ten, floor_log_10
+from src.numeral_patterns import get_numeral_pattern_from_decimal_digit
+from src.util import split_number_into_orders_of_ten, calculate_order_of_ten
+
 
 def convert(number_or_numeral):
     if (is_valid_number(number_or_numeral)):
@@ -14,20 +15,21 @@ def convert(number_or_numeral):
 def convert_number_to_numeral(number):
     numeral = ""
 
-    for power_of_ten in split_number_into_orders_of_ten(number):
-        numeral += (_number_to_numeral(power_of_ten))
+    for power_of_ten_part in split_number_into_orders_of_ten(number):
+        numeral += (apply_numeral_pattern_to_decimal_order(power_of_ten_part))
 
     return numeral
 
-def _number_to_numeral(number):
+
+def apply_numeral_pattern_to_decimal_order(number):
     numeral = ""
-    order_of_ten = floor_log_10(number)
+    order_of_ten = calculate_order_of_ten(number)
     decimal_digit = number // 10 ** order_of_ten
 
-    pattern = get_numeral_pattern_from_number(decimal_digit)
+    pattern = get_numeral_pattern_from_decimal_digit(decimal_digit)
 
-    for decimal in pattern:
-        numeral += get_numeral_from_decimal_value(decimal * (10 ** order_of_ten))
+    for pattern_digit in pattern:
+        numeral += get_numeral_from_decimal_value(pattern_digit * (10 ** order_of_ten))
     return numeral
 
 

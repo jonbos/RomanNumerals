@@ -11,5 +11,6 @@ decimal_digit_to_numeral_pattern = {
     9: [1, 10]
 }
 
-def get_numeral_pattern_from_number(number):
+
+def get_numeral_pattern_from_decimal_digit(number):
     return decimal_digit_to_numeral_pattern[number];
