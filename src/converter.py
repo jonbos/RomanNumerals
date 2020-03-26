@@ -1,9 +1,6 @@
-import math
-
-from src.numeral_mapping import numeral_by_number, get_decimal_value_from_numeral
-from src.numeral_patterns import number_to_numeral_pattern
-from src.util import split_number_into_orders_of_ten
-
+from src.numeral_mapping import get_decimal_value_from_numeral, get_numeral_from_decimal_value, number_to_numeral
+from src.numeral_patterns import get_numeral_pattern_from_number
+from src.util import split_number_into_orders_of_ten, floor_log_10
 
 def convert(number_or_numeral):
     if (_is_valid_number(number_or_numeral)):
