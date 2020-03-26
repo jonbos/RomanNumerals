@@ -28,11 +28,12 @@ def convert_number_to_numeral(number):
 
 def _number_to_numeral(number):
     numeral = ""
-    power_of_ten = _floor_log_10(number)
+    order_of_ten = floor_log_10(number)
+    decimal_digit = number // 10 ** order_of_ten
 
-    pattern = number_to_numeral_pattern[number // 10 ** power_of_ten]
-    for digit in pattern:
-        numeral += numeral_by_number[digit * (10 ** power_of_ten)]
+    pattern = get_numeral_pattern_from_number(decimal_digit)
+    for decimal in pattern:
+        numeral += get_numeral_from_decimal_value(decimal * (10 ** order_of_ten))
     return numeral
 
 
