@@ -8,7 +8,6 @@ number_to_numeral = {
     1000: "M"
 }
 
-
 def get_decimal_value_from_numeral(numeral):
     return [dec for dec, numer in number_to_numeral.items() if numer == numeral][0]
 

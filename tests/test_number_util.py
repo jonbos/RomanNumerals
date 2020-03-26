@@ -1,6 +1,6 @@
 import pytest
 
-from src.util import split_number_into_orders_of_ten, calculate_order_of_ten
+from src.number_util import split_number_into_powers_of_ten, calculate_power_of_ten
 
 
 @pytest.mark.parametrize("number,expected_array", [
@@ -12,7 +12,7 @@ from src.util import split_number_into_orders_of_ten, calculate_order_of_ten
     (1234, [1000, 200, 30, 4])
 ])
 def test_should_split_number_on_decimal_place_into_orders_of_ten(number, expected_array):
-    assert split_number_into_orders_of_ten(number) == expected_array
+    assert split_number_into_powers_of_ten(number) == expected_array
 
 
 @pytest.mark.parametrize("number, expected_order", [
@@ -22,4 +22,4 @@ def test_should_split_number_on_decimal_place_into_orders_of_ten(number, expecte
     (1000, 3),
 ])
 def test_should_return_calculate_order_of_ten(number, expected_order):
-    assert calculate_order_of_ten(number) == expected_order
+    assert calculate_power_of_ten(number) == expected_order
