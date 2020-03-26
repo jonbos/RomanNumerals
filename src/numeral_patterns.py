@@ -1,4 +1,4 @@
-number_to_numeral_pattern = {
+decimal_digit_to_numeral_pattern = {
     0: [],
     1: [1],
     2: [1, 1],
@@ -12,4 +12,4 @@ number_to_numeral_pattern = {
 }
 
 def get_numeral_pattern_from_number(number):
-    return number_to_numeral_pattern[number];
+    return decimal_digit_to_numeral_pattern[number];

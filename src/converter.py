@@ -13,10 +13,9 @@ def convert(number_or_numeral):
 
 def convert_number_to_numeral(number):
     numeral = ""
-    number_arr = split_number_into_orders_of_ten(number)
 
-    for factor in number_arr:
-        numeral += (_number_to_numeral(factor))
+    for power_of_ten in split_number_into_orders_of_ten(number):
+        numeral += (_number_to_numeral(power_of_ten))
 
     return numeral
 
@@ -26,6 +25,7 @@ def _number_to_numeral(number):
     decimal_digit = number // 10 ** order_of_ten
 
     pattern = get_numeral_pattern_from_number(decimal_digit)
+
     for decimal in pattern:
         numeral += get_numeral_from_decimal_value(decimal * (10 ** order_of_ten))
     return numeral
