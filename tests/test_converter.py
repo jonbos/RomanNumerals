@@ -62,6 +62,7 @@ def test_should_convert_numeral_to_number(numeral, expected_number):
     "A",
     "MMLIXZ",
     "MMCI5",
+    "-I"
 ])
 def test_should_return_invalid_when_numeral_is_invalid(invalid_input):
     assert is_valid_numeral(invalid_input) == False
@@ -70,7 +71,8 @@ def test_should_return_invalid_when_numeral_is_invalid(invalid_input):
 @pytest.mark.parametrize("invalid_input", [
     1.1,
     1 * 10 ** 50,
-    4000
+    4000,
+    -1
 ])
 def test_should_return_invalid_when_numeral_is_invalid(invalid_input):
     assert is_valid_number(invalid_input) == False

@@ -58,6 +58,4 @@ def is_valid_numeral(numeral):
 
 
 def is_valid_number(number):
-    return type(number) == int and number <= 3999
-
-
+    return type(number) == int and number <= 3999 and number >= 0
