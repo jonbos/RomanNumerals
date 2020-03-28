@@ -1,5 +1,6 @@
 from src.number_util import split_number_into_powers_of_ten, calculate_power_of_ten
-from src.numeral_mapping import get_decimal_value_from_numeral, get_numeral_from_decimal_value, number_to_numeral
+from src.numeral_mapping import get_decimal_value_from_numeral, get_numeral_from_decimal_value, \
+    calculate_max_representable_number, get_valid_numeral_characters
 from src.numeral_patterns import get_numeral_pattern_from_decimal_digit
 
 
@@ -52,7 +53,7 @@ def convert_numeral_to_number(numeral):
 
 
 def is_valid_numeral(numeral):
-    numeral_chars = "".join(number_to_numeral.values())
+    numeral_chars = get_valid_numeral_characters()
     for char in str(numeral):
         if char not in numeral_chars:
             return False
@@ -60,4 +61,4 @@ def is_valid_numeral(numeral):
 
 
 def is_valid_number(number):
-    return type(number) == int and number <= 3999 and number >= 0
+    return type(number) == int and number <= calculate_max_representable_number() and number >= 0
