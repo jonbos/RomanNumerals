@@ -1,7 +1,12 @@
 import math
 
-
+# 
+# 
 def split_number_into_powers_of_ten(number):
+    """
+    Splits an integer into an array of integers represnting each power of ten part
+    1234 -> [1000, 200, 30, 4]
+    """
     number_digits = [int(digit) for digit in str(number)]
     digits_and_powers_of_ten = zip(number_digits, range(len(number_digits) - 1, -1, -1))
     orders_of_ten = []
